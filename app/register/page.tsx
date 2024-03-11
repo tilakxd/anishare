@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -58,7 +59,7 @@ function Register() {
             </button>
           </div>
           <Link href="/login" className="my-2 text-white border-b-2">
-            Haven't Signed Up?
+            Haven&apos;t Signed Up?
           </Link>
         </div>
       </div>
