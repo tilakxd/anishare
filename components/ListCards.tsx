@@ -16,9 +16,10 @@ function ListCards({
 }) {
   const [complete, setComplete] = useState(false);
   const apiUrl = process.env.API_URL
+  axios.defaults.baseURL = apiUrl
   const completeAdd = async (_id: string) => {
     try {
-      const response = await axios.put("http://localhost:3000/api/complete", {
+      const response = await axios.put("/api/complete", {
         _id,
       });
       console.log(response.data.completed);
@@ -32,7 +33,7 @@ function ListCards({
     try {
       const fetchCompletion = async (_id: string) => {
         const response = await axios.post(
-          "http://localhost:3000/api/complete",
+          "/api/complete",
           { _id }
         );
         console.log(response.data.completed);

@@ -13,12 +13,13 @@ function Lsers({ params }: any) {
   const [auth, setAuth] = useState(false); // State variable to store userId
   const [anime, setAnime] = useState([]);
   const [error, setError] = useState("");
-  axios.defaults.baseURL = "http://localhost:3000/api/";
+  const apiUrl = process.env.API_URL
+  axios.defaults.baseURL = apiUrl
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchAnime = async () => {
-      const response = await axios.post("/find", { username: params.userId });
+      const response = await axios.post("/api/find", { username: params.userId });
       if (response.data.message == "success") {
         setAnime(response.data.animes);
       }
@@ -28,7 +29,7 @@ function Lsers({ params }: any) {
     };
     fetchAnime();
     const fetchData = async () => {
-      const response = await axios.get("/users");
+      const response = await axios.get("/api/users");
       setUsername(response.data.username);
     };
     fetchData();
@@ -46,7 +47,7 @@ function Lsers({ params }: any) {
 
   const deleteAnime = async (_id: string) => {
     try {
-      await axios.delete('/delete', {
+      await axios.delete('/api/delete', {
         params: {
           a: _id,
         }

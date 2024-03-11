@@ -13,7 +13,8 @@ const SuspenseWrapper = () => (
 export default SuspenseWrapper
 
 function SearchPage() {
-  axios.defaults.baseURL = "http://localhost:3000/api/";
+  const apiUrl = process.env.API_URL
+  axios.defaults.baseURL = apiUrl
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [username, setUsername] = useState("");
@@ -33,7 +34,7 @@ function SearchPage() {
     };
     fetchAnime();
     const fetchData = async () => {
-      const response = await axios.get("/users");
+      const response = await axios.get("/api/users");
       setUsername(response.data.username);
     };
     fetchData();
@@ -41,7 +42,7 @@ function SearchPage() {
 
   const addAnime = async (url: string, title: string) => {
     try {
-      const response = await axios.post("/add", { username, title, url });
+      const response = await axios.post("/api/add", { username, title, url });
       console.log(username);
       if (response.data.message === "success") {
         router.push(`/users/${username}`);

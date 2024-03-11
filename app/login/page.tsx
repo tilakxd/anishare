@@ -8,7 +8,8 @@ import { cookies } from "next/headers";
 import { verify } from "jsonwebtoken";
 
 function Login() {
-  axios.defaults.baseURL = "http://localhost:3000/api/";
+  const apiUrl = process.env.API_URL
+  axios.defaults.baseURL = apiUrl
   const router = useRouter();
   const [errorMessage, setError] = useState("");
   const [data, setData] = useState({
@@ -19,7 +20,7 @@ function Login() {
   const login = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/login", data);
+      const response = await axios.post("/api/login", data);
       console.log(response.data);
       setError(response.data.noti);
       if (response.data.message === "Authenticated!") {
