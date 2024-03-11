@@ -7,7 +7,9 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 function Register() {
-  axios.defaults.baseURL = "http://localhost:3000/api/";
+  const apiUrl = process.env.API_URL
+  axios.defaults.baseURL = apiUrl
+
   const { push } = useRouter();
   const [data, setData] = useState({
     username: "",
@@ -18,7 +20,7 @@ function Register() {
   const createAccount = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/register", data);
+      const response = await axios.post("/api/register", data);
       console.log(response.data);
       setError(response.data.error);
       if (!response.data.error) {
