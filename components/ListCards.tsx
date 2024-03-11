@@ -54,7 +54,7 @@ function ListCards({
   return (
     <>
       <div className="w-full max-w-72 border-2 rounded-lg items-center flex flex-col p-2">
-        <button onClick={handleClick} className="flex place-items-end">
+        {(!clicked && <button onClick={handleClick} className="flex place-items-end">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8"
@@ -65,7 +65,7 @@ function ListCards({
               d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6z"
             />
           </svg>
-        </button>
+        </button>)}
         <img className="h-40 w-30 rounded-lg my-2" src={url} alt="" />
         <div className="text-white my-2">{title}</div>
         <button
