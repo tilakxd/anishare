@@ -1,6 +1,6 @@
 // route.ts
 import connectMongoDB from "@/lib/mongodb";
-import User from "@/Model/userModel";
+import User  from "@/Model/userModel";
 
 export async function POST(req: Request) {
   await connectMongoDB();

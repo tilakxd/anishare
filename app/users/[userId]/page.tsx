@@ -45,9 +45,20 @@ function Lsers({ params }: any) {
     router.push(`/search?a=${search}`);
   };
 
-  const addComplete = (id:string) => {
-    const response = axios.put("./"+id);
-  };
+  const deleteAnime = async (_id: string) => {
+    try {
+      await axios.delete('/delete', {
+        params: {
+          a: _id,
+        }
+      });
+      // Filter out the deleted anime from the state
+      setAnime(prevAnime => prevAnime.filter(anime => anime['_id'] !== _id));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
 
   return (
     <>
@@ -79,10 +90,13 @@ function Lsers({ params }: any) {
           ) : (
             anime.map((animes) => (
               <ListCards
+                key={animes["_id"]}
                 url={animes["image_url"]}
                 title={animes["title"]}
                 clicked={!auth}
-                addComplete={addComplete(animes["_id"])}
+                _id={animes["_id"]}
+                deleteAnime={deleteAnime}
+                
               />
             ))
           )}
