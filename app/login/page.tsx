@@ -33,6 +33,7 @@ function Login() {
   };
   return (
     <>
+   
       <div className="h-screen w-screen flex justify-center items-center flex-col">
         <h1 className="text-white my-2 text-6xl p-2">Anishare</h1>
         <div className="border-2 border-white w-full max-w-xl h-full max-h-96 flex flex-col items-center p-2 justify-between">

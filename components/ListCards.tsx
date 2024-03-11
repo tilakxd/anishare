@@ -22,7 +22,6 @@ function ListCards({
       const response = await axios.put("/api/complete", {
         _id,
       });
-      console.log(response.data.completed);
       setComplete(response.data.completed); // Update the complete state with the new value
     } catch (error) {
       console.error("Error toggling completion status:", error);
@@ -36,7 +35,6 @@ function ListCards({
           "/api/complete",
           { _id }
         );
-        console.log(response.data.completed);
         setComplete(response.data.completed);
       };
       fetchCompletion(_id);

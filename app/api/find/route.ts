@@ -1,7 +1,6 @@
 // route.ts
 import connectMongoDB from "@/lib/mongodb";
 import User from "@/Model/userModel";
-import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   await connectMongoDB();
@@ -16,14 +15,16 @@ export async function POST(req: Request) {
     if (user) {
       const responseData = {
         message: "success",
-        animes: user.animes
+        animes: user.animes,
       };
-      
+
       return new Response(JSON.stringify(responseData));
     } else {
-      return new Response(JSON.stringify({
-        message: "No user found"
-      }));
+      return new Response(
+        JSON.stringify({
+          message: "No user found register this username to claim this page",
+        })
+      );
     }
   } catch (error) {
     console.error(error);

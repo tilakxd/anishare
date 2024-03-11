@@ -3,6 +3,7 @@ import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import AnimeCards from "@/components/AnimeCards";
+import Navbar from "@/components/Navbar";
 
 const SuspenseWrapper = () => (
     <Suspense>
@@ -56,6 +57,7 @@ function SearchPage() {
 
   return (
     <>
+    <Navbar />
       <div className="h-screen w-full ">
         <div className="flex flex-col items-center">
           <h1 className="text-white text-xl">Search query: {search}</h1>

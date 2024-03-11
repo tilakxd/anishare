@@ -8,15 +8,13 @@ export async function GET() {
   const token = cookieStore.get("token");
 
   if (!token) {
-    return NextResponse.json(
-      {
-        message: "Unauthorized",
-      },
-      {
-        status: 401,
-      }
-    );
+    return new Response(JSON.stringify({
+      "message": "unauthorized",
+    }), {
+      status: 401,
+    });
   }
+  
 
   const { value } = token;
 
