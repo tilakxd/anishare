@@ -39,8 +39,7 @@ function Lsers({ params }: any) {
     if (username == params.userId) {
       setAuth(true);
     }
-  }, [username]);
-
+  }, [username, params.userId]);
   const searchAnime = () => {
     router.push(`/search?a=${search}`);
   };
